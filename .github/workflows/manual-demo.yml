@@ -1,0 +1,41 @@
+name: Manual Trigger Demo
+
+on:
+  workflow_dispatch: # 允许手动触发
+    inputs: # 定义输入参数（可选）
+      environment:
+        description: '要部署的环境'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+      debug-mode:
+        description: '启用调试模式'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  say-hello:
+    name: 打招呼和调试
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码（通常第一步都需要）
+        uses: actions/checkout@v4
+
+      - name: 打招呼
+        run: |
+          echo "🎉 工作流被手动触发了！"
+          echo "您选择的环境是：${{ github.event.inputs.environment }}"
+          echo "调试模式是否开启：${{ github.event.inputs.debug-mode }}"
+
+  simulate-deploy:
+    name: 模拟部署
+    runs-on: ubuntu-latest
+    needs: say-hello # 表示此job依赖于say-hello job完成
+    if: ${{ github.event.inputs.environment == 'production' }} # 仅当环境为production时运行
+    steps:
+      - name: 模拟生产部署
+        run: echo "🚀 正在模拟部署到生产环境...(这里可以替换为真实的部署脚本)"
