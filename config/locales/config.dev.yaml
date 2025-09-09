@@ -1,0 +1,19 @@
+system:
+  host: "0.0.0.0"
+  port: "5001"
+
+mysql:
+  host: "mysql-container"
+  port: "3306"
+  userName: "root"
+  password: "123456"
+  dbName: "customer"
+
+email:
+  smtpHost: "smtp.qq.com"
+  smtpEmail: "656501226@qq.com"
+  smtpPass: "gshxhorkksdobfdc"
+
+logConfig:
+  filePath: "log/customer.log"
+  level: debug
