@@ -28,6 +28,8 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<maven.compiler.release>21</maven.compiler.release>
+		<sonar.organization>swe5006-group12</sonar.organization>
 	</properties>
 	<dependencies>
 		<dependency>
