@@ -12,7 +12,7 @@ import (
 func main() {
 	initAll()
 	r := router.NewRouter()
-	logger.GetLogger().Info("Cerami Craft MerchantServer start...")
+	logger.GetLogger().Info("Cerami Craft CustomerServer start...")
 	_ = r.Run(fmt.Sprintf("%s:%s", config.Config.System.Host, config.Config.System.Port))
 }
 
